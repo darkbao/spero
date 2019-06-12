@@ -3,6 +3,7 @@
 
 #include <string>
 #include <algorithm>
+#include "NonCopyable.hpp"
 #include "StringPiece.hpp"
 
 namespace spero
@@ -15,15 +16,7 @@ template <size_t SIZE>
 class FixedBuffer : public NonCopyable
 {
 public:
-    FixedBuffer() : cur_(data_), avail_(SIZE)
-    {
-        setCookie(cookieStart);
-    }
-
-    ~FixedBuffer()
-    {
-        setCookie(cookieEnd);
-    }
+    FixedBuffer() : cur_(data_), avail_(SIZE) { }
 
     size_t append(const char* buf, size_t len)
     {
@@ -44,7 +37,7 @@ public:
     }
 
     // write to data_ directly
-    inline char*  current()
+    inline char* current()
     { 
         return cur_;
     }
@@ -52,7 +45,7 @@ public:
     { 
         return avail_;
     }
-    inline void   add(size_t len)
+    inline void add(size_t len)
     { 
         cur_ += len;
     }
@@ -72,10 +65,6 @@ public:
         *cur_ = '\0';
         return data_;
     }
-    void setCookie(void (*cookie)())
-    {
-        cookie_ = cookie;
-    }
     
     // for used by unit test
     std::string toString() const
@@ -88,11 +77,6 @@ public:
     }
 
 private:
-    static void cookieStart() { }
-    static void cookieEnd() { }
-
-private:
-    void (*cookie_)();
     char     data_[SIZE];
     char*    cur_;
     size_t   avail_;

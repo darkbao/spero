@@ -2,7 +2,6 @@
 #define SPERO_BASE_THREAD_H
 
 #include <functional>
-//#include <memory>
 #include <pthread.h>
 
 #include "Atomic.hpp"

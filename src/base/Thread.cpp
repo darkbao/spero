@@ -96,8 +96,8 @@ AtomicInt32 Thread::numCreated_;
 Thread::Thread(ThreadFunc func, const std::string& str)
     : started_(false),
       joined_(false),
-      pthreadID_(0),
       tid_(0),
+      pthreadID_(0),
       func_(std::move(func)),
       name_(str),
       latch_(1)
@@ -128,8 +128,8 @@ void Thread::start()
     started_ = true;
     // FIXME: move(func_)
     detail::ThreadData* data = new detail::ThreadData(func_, name_, &tid_, &latch_);
-    int ret;
-    if (ret = pthread_create(&pthreadID_, NULL, &detail::startThread, data)) {
+    int ret = pthread_create(&pthreadID_, NULL, &detail::startThread, data);
+    if (ret != 0) {
         started_ = false;
         delete data; // or no delete?
         printf("failed in pthread_create, ret:%d\n", ret);

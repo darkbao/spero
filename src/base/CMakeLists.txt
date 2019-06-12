@@ -14,7 +14,7 @@ set(src_base
     )
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-add_definitions(-std=c++11 -g)
+add_definitions(-std=c++11 -g -Wall)
 add_library(spero_base STATIC ${src_base})
 target_link_libraries(spero_base pthread)
 

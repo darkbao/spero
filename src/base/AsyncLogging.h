@@ -39,7 +39,7 @@ public:
         thread_.join();
     }
 
-    void append(const char* logline, int len);
+    void append(const char* logline, size_t len);
 
 protected:
     void threadFunc();
