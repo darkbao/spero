@@ -1,7 +1,6 @@
 #include <sys/time.h>
 #include <stdio.h>
 #include <inttypes.h>
-
 #include "Timestamp.h"
 
 #ifndef __STDC_FORMAT_MACROS

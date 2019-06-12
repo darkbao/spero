@@ -6,6 +6,11 @@ set(src_base
     Exception.cpp
     Timestamp.cpp
     Thread.cpp
+    FileUtil.cpp
+    LogFile.cpp
+    Logging.cpp
+    ProcessInfo.cpp
+    AsyncLogging.cpp
     )
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
