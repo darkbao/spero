@@ -65,11 +65,11 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < maxCount; ++i) {
         g_vec.push_back(i);
     }
-    printf("single thread without lock timeUsed: %f\n", timeDifference(Timestamp::now(), start));
+    printf("single thread without lock timeUsed: %f\n", timeDiff(Timestamp::now(), start));
 
     start = Timestamp::now();
     threadFunc();
-    printf("single thread with lock timeUsed: %f\n", timeDifference(Timestamp::now(), start));
+    printf("single thread with lock timeUsed: %f\n", timeDiff(Timestamp::now(), start));
 
     for (int nthreads = 1; nthreads < maxThreads; ++nthreads) {
         g_vec.clear();
@@ -85,7 +85,7 @@ int main(int argc, char const *argv[])
             threads[i]->join();
         }
        
-        printf("%d thread(s) with lock timeUsed: %f\n", nthreads+1, timeDifference(Timestamp::now(), start));
+        printf("%d thread(s) with lock timeUsed: %f\n", nthreads+1, timeDiff(Timestamp::now(), start));
     }
 }
 

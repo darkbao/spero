@@ -100,7 +100,7 @@ inline bool operator==(Timestamp lhs, Timestamp rhs)
     @c double has 52-bit precision, enough for one-microsecond
     resolution for next 100 years.
 */
-inline double timeDifference(Timestamp high, Timestamp low)
+inline double timeDiff(Timestamp high, Timestamp low)
 {
     int64_t diff = high.microSecondsSinceEpoch() - low.microSecondsSinceEpoch();
     return static_cast<double>(diff) / Timestamp::kMicroSecondsPerSecond;

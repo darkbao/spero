@@ -11,3 +11,6 @@ target_link_libraries(Mutex_test spero_base)
 
 add_executable(FixedBuffer_test FixedBuffer_test.cpp)
 target_link_libraries(FixedBuffer_test spero_base)
+
+add_executable(Timestamp_test Timestamp_test.cpp)
+target_link_libraries(Timestamp_test spero_base)

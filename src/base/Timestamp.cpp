@@ -6,7 +6,7 @@
 #ifndef __STDC_FORMAT_MACROS
 #define __STDC_FORMAT_MACROS
 #endif
-
+// macro for PRId64, print int64_t in 32/64bit OS
 
 using namespace spero;
 using std::string;
@@ -19,6 +19,7 @@ string Timestamp::toString() const
     int64_t seconds = microSecondsSinceEpoch_ / kMicroSecondsPerSecond;
     int64_t microseconds = microSecondsSinceEpoch_ % kMicroSecondsPerSecond;
     snprintf(buf, sizeof(buf)-1, "%" PRId64 ".%06" PRId64 "", seconds, microseconds);
+    //snprintf(buf, sizeof(buf)-1, "%ld.%06ld", seconds, microseconds);
     return buf;
 }
 
